@@ -1,10 +1,14 @@
 class Cubo{
   PVector center;
   PImage texture;
+  int posx = 0;
+  int posy = 0;
   
-  Cubo(PVector c, String tex){
+  Cubo(PVector c, String tex, int x, int y){
     this.center = c.get();
     this.texture = loadImage(tex);
+    this.posx = x;
+    this.posy = y;
   }
   
   void render(){
@@ -34,11 +38,17 @@ class Cubo{
     // tiling all the way around the cube)
     
     // +Z "front" face #1
+    vertex(-1, -1,  1, 0, 0);
+    vertex( 1, -1,  1, 0.25, 0);
+    vertex( 1,  1,  1, 0.25, 0.25);
+    vertex(-1,  1,  1, 0, 0.25);
+    
+    /*
     vertex(-1, -1,  1, 0.25, 0.25);
     vertex( 1, -1,  1, 0.5, 0.25);
     vertex( 1,  1,  1, 0.5, 0.5);
     vertex(-1,  1,  1, 0.25, 0.5);
-  
+  //*/
     // -Z "back" face #6
     vertex( 1, -1, -1, 0.25, 0.75);
     vertex(-1, -1, -1, 0.5, 0.75);

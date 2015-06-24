@@ -17,12 +17,15 @@ int col = 4;//16 4
 int row = 4;//6 4
 int numCubos = col*row;
 
+//Texture
+
+
 Parallel tp;
 
 
 void setup() {
   size(640, 360, P3D);
-  tex = loadImage("uv_dado.png");
+  tex = loadImage("praca.jpg");
   textureMode(NORMAL);
   fill(255);
   stroke(color(44,48,32));
@@ -34,7 +37,7 @@ void setup() {
   for(int i=0; i<col ; i++){
     for(int j=0; j<row ; j++){
       PVector p = new PVector(i*40, j*40, 0);
-      cubos[last] = new Cubo(p, "uv_dado.png");
+      cubos[last] = new Cubo(p, "praca.jpg", i, j);
       last++;
     }
   }
