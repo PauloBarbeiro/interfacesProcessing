@@ -13,8 +13,8 @@ float depth= 0;//-200
 //Cubo cube;
 //Cubo cube2;
 Cubo[] cubos;
-int col = 15;//4
-int row = 6;//4
+int col = 4;//16 4
+int row = 4;//6 4
 int numCubos = col*row;
 
 Parallel tp;
