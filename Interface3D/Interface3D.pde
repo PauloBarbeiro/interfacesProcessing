@@ -10,8 +10,12 @@ float rotz = 0;
 
 float depth= 0;//-200
 
-Cubo cube;
-Cubo cube2;
+//Cubo cube;
+//Cubo cube2;
+Cubo[] cubos;
+int col = 15;//4
+int row = 6;//4
+int numCubos = col*row;
 
 Parallel tp;
 
@@ -23,23 +27,44 @@ void setup() {
   fill(255);
   stroke(color(44,48,32));
   
-  cube = new Cubo(new PVector(0,0,0), "uv_dado.png");
-  cube2 = new Cubo(new PVector(40,0,0), "uv_dado.png");
+  //cube = new Cubo(new PVector(0,0,0), "uv_dado.png");
+  //cube2 = new Cubo(new PVector(40,0,0), "uv_dado.png");
+  cubos = new Cubo[numCubos];
+  int last = 0;
+  for(int i=0; i<col ; i++){
+    for(int j=0; j<row ; j++){
+      PVector p = new PVector(i*40, j*40, 0);
+      cubos[last] = new Cubo(p, "uv_dado.png");
+      last++;
+    }
+  }
+  
+  
+  
+  /*
+  for(int i=0 ; i<numCubos ; i++){
+    println("cria cubo "+i+" ------------------");
+    int posx = 0;
+    int posy = 0;
+    //há quebra de linha?
+    if(i%col == 0 && i!=0){
+      println("nova linha");
+    }
+    
+    //calcular posição
+    PVector p = new PVector(i*40, 0,0);   
+    //criar vetor
+    
+    //instanciar cubo
+    cubos[i] = new Cubo(p, "uv_dado.png");
+  }//*/
   
   Motion.setup(this);
   
   tp = new Parallel();
-  tp.add(new Tween("rotx1", this, "rotx", radians(0), 50))
-    .add(new Tween("roty1", this, "roty", radians(0), 50))
-    .add(new Tween("rotz1", this, "rotz", radians(0), 50));//.play();
-  /*
-  tp.add(new Tween("rotx4", this, "rotx", radians(90), 50))
-    .add(new Tween("roty4", this, "roty", radians(360), 50))
-    .add(new Tween("rotz4", this, "rotz", radians(720), 50));//.play();//*/
-  
-  tp.add(new Tween("rotx6", this, "rotx", radians(180), 50))
-    .add(new Tween("roty6", this, "roty", radians(0), 50))
-    .add(new Tween("rotz6", this, "rotz", radians(0), 50));//.play();
+  tp.add(new Tween("rotx1", this, "rotx", radians(540), 50));
+    //.add(new Tween("roty1", this, "roty", radians(0), 50))
+    //.add(new Tween("rotz1", this, "rotz", radians(0), 50));//.play();
 }
 
 void draw() {
@@ -47,11 +72,14 @@ void draw() {
   background(0);
   
   noStroke();
-  translate(width/2.0, height/2.0, depth);
+  //translate(width/2.0, height/2.0, depth);
+  translate(40, 30, depth);
   
-  cube.render();
- 
-  cube2.render();
+  //cube.render();
+  //cube2.render();
+  for(int i=0 ; i<numCubos ; i++){
+    cubos[i].render();
+  }
  
   //camera(map(mouseX, 0, width, -100, 100), map(mouseY, 0, height, -150, 150), 140,   0, 0, 0,   0, 1, 0);
 }
@@ -75,6 +103,7 @@ public void mousePressed() {
 }
 
 public void mouseReleased() {
+  //tp.getTween("rotx1").resume();
   tp.resume();
 }
 
