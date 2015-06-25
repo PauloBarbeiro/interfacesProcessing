@@ -38,10 +38,10 @@ class Cubo{
     // tiling all the way around the cube)
     
     // +Z "front" face #1
-    vertex(-1, -1,  1, 0, 0);
-    vertex( 1, -1,  1, 0.25, 0);
-    vertex( 1,  1,  1, 0.25, 0.25);
-    vertex(-1,  1,  1, 0, 0.25);
+    vertex(-1, -1,  1, this.posx * 0.25     , this.posy * 0.25    ); //A
+    vertex( 1, -1,  1, (this.posx+1) * 0.25 , this.posy * 0.25    ); //B
+    vertex( 1,  1,  1, (this.posx+1) * 0.25 , (this.posy+1) * 0.25); //D
+    vertex(-1,  1,  1, this.posx * 0.25     , (this.posy+1) * 0.25); //C
     
     /*
     vertex(-1, -1,  1, 0.25, 0.25);
