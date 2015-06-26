@@ -16,6 +16,10 @@ Cubo[] cubos;
 int col = 4;//16 4
 int row = 4;//6 4
 int numCubos = col*row;
+float colunit = 100.0/col;
+float rowunit = 100.0/row;
+
+
 
 //Texture
 
@@ -24,6 +28,10 @@ Parallel tp;
 
 
 void setup() {
+  println( colunit );
+  println(rowunit );
+
+
   size(640, 360, P3D);
   tex = loadImage("praca.jpg");
   textureMode(NORMAL);

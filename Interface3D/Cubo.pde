@@ -38,11 +38,19 @@ class Cubo{
     // tiling all the way around the cube)
     
     // +Z "front" face #1
+    println("row: "+rowunit);
+    println("col: "+colunit);
+    vertex(-1, -1,  1, this.posx * colunit     , this.posy * rowunit    ); //A
+    vertex( 1, -1,  1, (this.posx+1) * colunit , this.posy * rowunit    ); //B
+    vertex( 1,  1,  1, (this.posx+1) * colunit , (this.posy+1) * rowunit); //D
+    vertex(-1,  1,  1, this.posx * colunit     , (this.posy+1) * rowunit); //C
+    
+    /*
     vertex(-1, -1,  1, this.posx * 0.25     , this.posy * 0.25    ); //A
     vertex( 1, -1,  1, (this.posx+1) * 0.25 , this.posy * 0.25    ); //B
     vertex( 1,  1,  1, (this.posx+1) * 0.25 , (this.posy+1) * 0.25); //D
     vertex(-1,  1,  1, this.posx * 0.25     , (this.posy+1) * 0.25); //C
-    
+    //*/
     /*
     vertex(-1, -1,  1, 0.25, 0.25);
     vertex( 1, -1,  1, 0.5, 0.25);
