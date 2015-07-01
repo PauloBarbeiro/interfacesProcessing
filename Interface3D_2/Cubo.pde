@@ -92,10 +92,10 @@ class Cubo{
     vertex( -1,  1,  1, 0.25, 0.5);
     vertex( -1,  1, -1, 0, 0.5);//*/
     
-    vertex( -1, -1, -1, this.posx * colunit    , this.posy * rowunit    );
-    vertex( -1, -1,  1, (this.posx+1) * colunit, this.posy * rowunit    );
-    vertex( -1,  1,  1, (this.posx+1) * colunit, (this.posy+1) * rowunit);
-    vertex( -1,  1, -1, this.posx * colunit    , (this.posy+1) * rowunit);
+    vertex( -1, -1, -1, this.posx * colunit    , ((this.posy+1)*1) * rowunit);//A
+    vertex( -1, -1,  1, (this.posx+1) * colunit, ((this.posy+1)*1) * rowunit);//B
+    vertex( -1,  1,  1, (this.posx+1) * colunit, ((this.posy+1)*2) * rowunit);//C
+    vertex( -1,  1, -1, this.posx * colunit    , ((this.posy+1)*2) * rowunit);//D
   
   /*vertex(-1, -1,  1, this.posx * colunit     , this.posy * rowunit    ); //A
     vertex( 1, -1,  1, (this.posx+1) * colunit , this.posy * rowunit    ); //B
