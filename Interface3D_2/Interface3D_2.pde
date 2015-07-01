@@ -24,7 +24,7 @@ int col = 8;//16 4
 int row = 8;//6 4
 int numCubos = col*row;
 float colunit = 1.0/col;
-float rowunit = 1.0/row;
+float rowunit = 1.0/(row*2);
 
 Parallel tp;
 
@@ -41,7 +41,7 @@ void setup() {
   //lights
   pointLight(51, 102, 126, 35, 40, 36);
   
-  tex = loadImage("praca.jpg");
+  tex = loadImage("praca_dupla.jpg");
   sepia = loadImage("praca_sepia.jpg");
   roxa = loadImage("praca_roxa.jpg");
   
@@ -61,10 +61,22 @@ void setup() {
   for(int i=0; i<col ; i++){
     for(int j=0; j<row ; j++){
       PVector p = new PVector(i*40, j*40, 0);
-      cubos[last] = new Cubo(p, "praca.jpg", i, j);
+      cubos[last] = new Cubo(p, "praca_dupla.jpg", i, j);
       last++;
     }
   }
+  
+  cubos2 = new Cubo[(col)*(row-1)];
+  last = 0;
+  for(int i=0; i<col ; i++){
+    for(int j=0; j<row-1 ; j++){
+      PVector p = new PVector(0, i*40, (j+1)*-40);
+      cubos2[last] = new Cubo(p, "praca_dupla.jpg", i, j+1);
+      last++;
+    }
+  }
+  
+  
   
   //font
   font = loadFont("Ubuntu-Medium-40.vlw");
@@ -98,10 +110,15 @@ void draw() {
   for(int i=0 ; i<numCubos ; i++){
     cubos[i].render();
   }
+  
+  for(int i=0 ; i<cubos2.length ; i++){
+    cubos2[i].render();
+  }
  
   //camera(map(mouseX, 0, width, -100, 100), map(mouseY, 0, height, -150, 150), 140,   0, 0, 0,   0, 1, 0);
   xoff = xoff + .01;
-  camera(noise(xoff) * -140, noise(xoff) * -120, 340,   80, 120, depth,   0, 1, 0);
+  //camera(noise(xoff) * -140, noise(xoff) * -120, 340,   80, 120, depth,   0, 1, 0);
+  camera(-340, noise(xoff) * -220, 340,   80, 120, depth,   0, 1, 0);
   
   
   text("Praças Históricas de São Paulo", 0, height-350);

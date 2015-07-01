@@ -1,0 +1,7 @@
+class Wall{
+
+  Wall(){
+    
+  }
+
+}//Wall

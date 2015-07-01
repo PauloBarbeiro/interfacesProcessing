@@ -86,10 +86,21 @@ class Cubo{
     vertex( 1,  1,  1, 0.5, 0.5);
   
     // -X "left" face #2
+    /*
     vertex( -1, -1, -1, 0, 0.25);
     vertex( -1, -1,  1, 0.25, 0.25);
     vertex( -1,  1,  1, 0.25, 0.5);
-    vertex( -1,  1, -1, 0, 0.5);
+    vertex( -1,  1, -1, 0, 0.5);//*/
+    
+    vertex( -1, -1, -1, this.posx * colunit    , this.posy * rowunit    );
+    vertex( -1, -1,  1, (this.posx+1) * colunit, this.posy * rowunit    );
+    vertex( -1,  1,  1, (this.posx+1) * colunit, (this.posy+1) * rowunit);
+    vertex( -1,  1, -1, this.posx * colunit    , (this.posy+1) * rowunit);
+  
+  /*vertex(-1, -1,  1, this.posx * colunit     , this.posy * rowunit    ); //A
+    vertex( 1, -1,  1, (this.posx+1) * colunit , this.posy * rowunit    ); //B
+    vertex( 1,  1,  1, (this.posx+1) * colunit , (this.posy+1) * rowunit); //D
+    vertex(-1,  1,  1, this.posx * colunit     , (this.posy+1) * rowunit); //C */
   
     endShape();
     popMatrix();
