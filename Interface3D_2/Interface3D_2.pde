@@ -20,8 +20,8 @@ float depth= -50;//-200
 //Cubo cube2;
 Cubo[] cubos;
 Cubo[] cubos2;
-int col = 4;//16 4
-int row = 4;//6 4
+int col = 3;//16 4
+int row = 3;//6 4
 int numCubos = ((col*row)*2)-col;
 float colunit = 1.0/col;
 float rowunit = 1.0/(row*2);
@@ -65,18 +65,20 @@ void setup() {
     for(int j=0; j<row ; j++){
       println("----------------------");
       if( i==0 ){
-        println("x: "+i*40+"   y: "+(j+1)*40+"   z : 0");
+        println("x: "+i*40+"   y: "+(j+1)*40+"   z : 0 :: UV x:"+i+" y:"+j);
         PVector p = new PVector(i*40, j*40, 0);
         cubos[last] = new Cubo(p, "praca_dupla.jpg", i, j);
         last++;
       }
       else{
-        println("x: "+i*40+"   y: "+(j+1)*40+"   z : "+(j+1)*-40);
-        println("x: 0  y: "+(j+1)*40+"   z : 0");
+        println("x: "+i*40+"   y: "+(j)*40+"   z : 0 :: UV x:"+i+" y:"+j);
+        println("x: 0  y: "+j*40+"   z : "+i*-40+" :: UV x:"+j+" y:"+i);
         PVector p = new PVector(i*40, j*40, 0);
         cubos[last] = new Cubo(p, "praca_dupla.jpg", i, j);
         last++;
-        p = new PVector(0, i*40, (j+1)*-40);
+        //p = new PVector(160, 160, 60);
+        //p = new PVector(0, i*40, (j+1)*-40);
+        p = new PVector(0, j*40, i*-40);
         cubos[last] = new Cubo(p, "praca_dupla.jpg", j, i);
         last++;
       }
@@ -148,8 +150,9 @@ void draw() {
     cubos2[i].render();
   }//*/
  
-  //xoff = xoff + .01;
-  camera(-340, noise(xoff) * -220, 340,   80, 120, depth,   0, 1, 0);
+  xoff = xoff + .01;
+  //camera(-340, noise(xoff) * -220, 340,   80, 120, depth,   0, 1, 0);
+  camera(-140, noise(xoff) * -120, 140,   80, 120, depth,   0, 1, 0);
   
   
   text("Praças Históricas de São Paulo", 0, height-350);

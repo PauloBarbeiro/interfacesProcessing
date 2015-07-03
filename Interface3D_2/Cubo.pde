@@ -9,6 +9,7 @@ class Cubo{
     this.texture = loadImage(tex);
     this.posx = x;
     this.posy = y;
+    println("x: "+ abs((this.posx-col)) );
   }
   
   void setTexture(PImage tex){
@@ -86,21 +87,24 @@ class Cubo{
     vertex( 1,  1,  1, 0.5, 0.5);
   
     // -X "left" face #2
-    /*
-    vertex( -1, -1, -1, 0, 0.25);
-    vertex( -1, -1,  1, 0.25, 0.25);
-    vertex( -1,  1,  1, 0.25, 0.5);
-    vertex( -1,  1, -1, 0, 0.5);//*/
+    //abs((this.posx-col))
+    println(col+" : "+row+" =>  "+(1.0/col)*2 +" ,"+ (1.0/(row*2))*2);
+    vertex( -1, -1, -1, (1.0/col)*2 , (1.0/(row*2))*2 );//0.66 : 0.83  ::  1/3 *2     -  1/6 *2
+    vertex( -1, -1,  1, (1.0/col) *col    , 0.83 );// 1 : 0.83  :: 1/3 *3  -  1/6 *5
+    vertex( -1,  1,  1, 1    , 1    );//
+    vertex( -1,  1, -1, 0.66 , 1    );//*/
     
-    vertex( -1, -1, -1, this.posx * colunit    , ((this.posy+1)*1) * rowunit);//A
-    vertex( -1, -1,  1, (this.posx+1) * colunit, ((this.posy+1)*1) * rowunit);//B
-    vertex( -1,  1,  1, (this.posx+1) * colunit, ((this.posy+1)*2) * rowunit);//C
-    vertex( -1,  1, -1, this.posx * colunit    , ((this.posy+1)*2) * rowunit);//D
+    /*
+    vertex( -1, -1, -1, 0  , 0.5);//A
+    vertex( -1, -1,  1, 1  , 0.5);//B
+    vertex( -1,  1,  1, 1  , 1);//C
+    vertex( -1,  1, -1, 0  , 1);//D */
   
-  /*vertex(-1, -1,  1, this.posx * colunit     , this.posy * rowunit    ); //A
+    /*
+    vertex(-1, -1,  1, this.posx * colunit     , this.posy * rowunit    ); //A
     vertex( 1, -1,  1, (this.posx+1) * colunit , this.posy * rowunit    ); //B
-    vertex( 1,  1,  1, (this.posx+1) * colunit , (this.posy+1) * rowunit); //D
-    vertex(-1,  1,  1, this.posx * colunit     , (this.posy+1) * rowunit); //C */
+    vertex( 1,  1,  1, (this.posx+1) * colunit , (this.posy+1) * rowunit); //C
+    vertex(-1,  1,  1, this.posx * colunit     , (this.posy+1) * rowunit); //D */
   
     endShape();
     popMatrix();
